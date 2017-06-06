@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>sk.zatko.recipe-search</groupId>
+		<artifactId>recipe-search</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>recipe-search-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>recipe-search-ear</name>
+	
+	<dependencies>
+        <dependency>
+            <groupId>sk.zatko.recipe-search</groupId>
+			<artifactId>recipe-search-webapp</artifactId>
+			<version>1.0.0</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>sk.zatko.recipe-search</groupId>
+            <artifactId>recipe-search-backend</artifactId>
+            <version>1.0.0</version>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+    
+        <finalName>recipe-search</finalName>
+        
+        <plugins>
+            <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-ear-plugin</artifactId>
+		        <version>2.3.2</version>
+		        <configuration>
+					<modules>
+						<webModule>
+			            	<groupId>sk.zatko.recipe-search</groupId>
+							<artifactId>recipe-search-webapp</artifactId>
+			            </webModule>
+						<ejbModule>
+							<groupId>sk.zatko.recipe-search</groupId>
+            				<artifactId>recipe-search-backend</artifactId>
+						</ejbModule>
+					</modules>
+		        </configuration>
+		      </plugin>
+        </plugins>
+    </build>
+	
+</project>

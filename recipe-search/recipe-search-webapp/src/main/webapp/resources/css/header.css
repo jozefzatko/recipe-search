@@ -1,0 +1,31 @@
+
+.header {
+	width: 100%;
+	height: 60px;
+	background: #beecba;
+	color: #FFFFFF;
+	float: left;
+}
+
+
+.header-nav-area {
+
+	text-align: center;
+}
+
+
+ul.header-nav {
+	
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	float: left
+}
+
+
+ul.header-nav li {
+
+	float: left;
+	display: block;
+}
+

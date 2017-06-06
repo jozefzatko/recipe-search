@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+		
+	<h:body>
+
+		<ui:composition template="layout/layout.xhtml">
+
+			<ui:define name="content">
+				
+				<div class="searchPanel">
+				
+					<div class="big-logo">
+						<h:link outcome="index" >
+								<h:graphicImage library="img" name="recipesearch.png"
+									style="width: 600px; height: 120px;"/>
+							</h:link>
+					</div>
+				
+					<h:form>
+						<h:inputText styleClass="searchField" value="#{searchBean.query}" />
+						
+						<div class="buttons">
+						
+							<h:commandButton styleClass="searchButton"
+								action="#{searchBean.search}"
+								value="Search"
+								style="float: right;">
+							</h:commandButton>
+							
+							<h:commandButton styleClass="advancedButton"
+								action="advanced?faces-redirect=true"
+								value="Advanced Search"
+								style="float: left;">
+							</h:commandButton>
+							
+						</div>
+					</h:form>
+				</div>
+				
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</html>

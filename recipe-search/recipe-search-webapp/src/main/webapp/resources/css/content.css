@@ -1,0 +1,53 @@
+.layout {
+    
+	width: 1200px;
+	margin: auto;
+}
+
+.content {
+	
+	border: 1px solid #beecba;
+	height: 800px;
+	
+}
+
+.searchPanel {
+	
+	width: 600px;
+	margin: auto;
+}
+
+.big-logo {
+	
+	padding-top: 200px;
+	padding-bottom: 20px;
+}
+
+.searchField {
+	
+	margin: auto;
+	width: 600px;
+	height: 36px;
+	font-size: 24px;
+	margin-bottom: 5px;
+}
+
+.buttons {
+	
+	margin: auto;
+	width: 400px;
+}
+
+.searchButton {
+	
+	width: 200px;
+	height: 32px;
+	font-size: 20px;
+}
+
+.advancedButton {
+	
+	width: 200px;
+	height: 32px;
+	font-size: 20px;
+}
