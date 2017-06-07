@@ -1,0 +1,124 @@
+{
+	"settings": {
+		"index": {
+			"analysis": {
+				"analyzer": {
+					"keyword_analyzer": {
+						"tokenizer": "keyword"
+					},
+					"whitespace_analyzer": {
+						"type": "whitespace"
+					},
+					"text_analyzer": {
+						"type": "standard",
+						"filter": [ "lovercase", "english_stemmer" ],
+						"stopwords": "_english_"
+					},
+					"ingredients_analyzer": {
+						"tokenizer": "standard",
+						"char_filter": "number_remover",
+						"filter": [ "lowercase", "word_delimiter", "english_stemmer", "ingredients_stops", "ingredients_length" ]
+					}
+				},
+				"filter": {
+					"english_stemmer": {
+						"type": "stemmer",
+						"language": "minimal_english"
+					},
+					"ingredients_stops": {
+						"type": "stop",
+						"stopwords_path": "stop-words/stopwords-ingredients.txt"
+					},
+					"ingredients_length": {
+						"type": "length",
+						"min": 2
+					}
+				},
+				"char_filter": {
+					"number_remover": {
+					"type": "pattern_replace",
+					"pattern": "(\\d+)",
+					"replacement": ""
+        }
+      }
+			}
+		}
+	},
+	"mappings": {
+		"recipe": {
+			"properties": {
+				"rec_name": {
+					"type":"string",
+					"fields" : {
+						"original" : {
+							"type": "string",
+							"analyzer": "keyword_analyzer"
+						},
+						"analyzed": {
+							"type": "string",
+							"analyzer": "whitespace_analyzer"
+						}
+					}
+				},
+				"rec_author": {
+					"type": "string",
+					"analyzer": "whitespace_analyzer"
+				},
+				"rec_categories": {
+					"type": "string",
+					"analyzer": "keyword_analyzer"
+				},
+				"rec_rating": {
+					"type": "double"
+				},
+				"rec_ready_in_time": {
+					"type": "string"
+				},
+				"rec_servings_count": {
+					"type": "integer"
+				},
+				"rec_calories": {
+					"type": "integer"
+				},
+				"rec_ingredients": {
+					"type": "string",
+					"fields": {
+						"original" : {
+							"type": "string",
+							"analyzer": "text_analyzer"
+						},
+						"analyzed" : {
+							"type": "string",
+							"analyzer": "ingredients_analyzer"
+						}
+					}
+				},
+				"rec_directions": {
+					"type": "string",
+					"fields": {
+						"original": {
+							"type": "string",
+							"analyzer": "whitespace_analyzer"
+						},
+						"analyzed": {
+							"type":"string",
+							"analyzer": "text_analyzer"
+						}
+					}
+				},
+				"rec_reviews": {
+					"properties": {
+						"rev_author": {
+							"type": "string",
+							"analyzer": "whitespace_analyzer"
+						},
+						"rev_text": {
+							"type":"string",
+							"analyzer": "text_analyzer"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -31,12 +31,13 @@
     
         <finalName>recipe-search</finalName>
         
-        <plugins>
-            <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-ear-plugin</artifactId>
-		        <version>2.3.2</version>
-		        <configuration>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
 						<webModule>
 			            	<groupId>sk.zatko.recipe-search</groupId>

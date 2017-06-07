@@ -15,7 +15,33 @@
 			        <f:viewParam name="query" value="#{searchBean.query}" />
 			    </f:metadata>
 				
-				Search page
+				<h1>Results(#{searchBean.results.hits.total})</h1>
+				
+				<ui:repeat value="#{searchBean.results.hits.hits}" var="hit">
+				    
+				    <ui:include src="_resultItem.xhtml">
+						<ui:param name="recipe" value="#{hit.recipe}" />
+					</ui:include>
+
+				</ui:repeat>
+				
+				
+				<h1>Categories</h1>
+				
+				<ui:repeat value="#{searchBean.categories.aggregations.categories.buckets}" var="bucket">
+				    
+				    #{bucket.key} (#{bucket.docCount})<br/>
+
+				</ui:repeat>
+				
+				
+				<h1>Top ingredients</h1>
+				
+				<ui:repeat value="#{searchBean.ingredients.aggregations.ingredients.buckets}" var="bucket">
+				    
+				    #{bucket.key} (#{bucket.docCount})<br/>
+
+				</ui:repeat>
 				
 			</ui:define>
 
